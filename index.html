@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Holi Frame</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap');
+    
+    * {
+      font-family: 'Poppins', sans-serif;
+    }
+  
+    
+    .gradient-bg {
+      background: linear-gradient(135deg, #FF6B6B 0%, #FFE66D 25%, #4ECDC4 50%, #FF6B9D 75%, #C44DFF 100%);
+      background-size: 400% 400%;
+      animation: gradientShift 8s ease infinite;
+    }
+    
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    
+    .color-splash {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.6;
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-20px) scale(1.1); }
+    }
+    
+    .photo-frame {
+      background: linear-gradient(145deg, #FFE66D, #FF6B6B, #C44DFF, #4ECDC4);
+      padding: 6px;
+      border-radius: 16px;
+    }
+    
+    .capture-btn {
+      background: linear-gradient(135deg, #FF6B6B, #C44DFF);
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(196, 77, 255, 0.4);
+    }
+    
+    .capture-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 35px rgba(196, 77, 255, 0.5);
+    }
+    
+    .capture-btn:active {
+      transform: scale(0.95);
+    }
+    
+    .download-btn {
+      background: linear-gradient(135deg, #4ECDC4, #44B09E);
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 20px rgba(78, 205, 196, 0.4);
+    }
+    
+    .download-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(78, 205, 196, 0.5);
+    }
+    
+    .logo-container {
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .rangoli-pattern {
+      background-image: radial-gradient(circle at 50% 50%, transparent 20%, rgba(255,255,255,0.1) 20%, rgba(255,255,255,0.1) 25%, transparent 25%);
+      background-size: 30px 30px;
+    }
+    .PAINTFORCE{
+      background: linear-gradient(to right, #f9a825,  /* yellow-orange */
+  #ff3d00,  /* red */
+  #ff4fa3,  /* pink */
+  #7e57c2,  /* purple */
+  #42a5f5,  /* blue */
+  #43a047,
+  #01dc0c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+    }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full overflow-auto" style="background-image: url('Holi (2).Png');">
+  
+  <div id="app-wrapper" class="min-h-full w-full gradient-bg rangoli-pattern relative"><!-- Floating color splashes -->
+   <div class="color-splash w-32 h-32 bg-pink-400 top-10 left-10" style="animation-delay: 0s;"></div>
+   <div class="color-splash w-40 h-40 bg-yellow-400 top-20 right-20" style="animation-delay: 1s;"></div>
+   <div class="color-splash w-36 h-36 bg-purple-500 bottom-20 left-1/4" style="animation-delay: 2s;"></div>
+   <div class="color-splash w-28 h-28 bg-teal-400 bottom-10 right-10" style="animation-delay: 3s;"></div><!-- Header with logos -->
+   <header class="logo-container sticky top-0 z-50 px-6 py-3">
+    <div class="max-w-6xl mx-auto flex items-center justify-between"><!-- Left Logo -->
+     <div class="flex items-center gap-2">
+     <img src="Funforce-Sales-AMER-Logo-RGB.png" 
+     class=" h-12  object-cover " 
+     alt="Logo 1">
+     </div><!-- Center Title -->
+     <div class="text-center">
+      <h1 class="text-xl sm:text-2xl font-extrabold bg-gradient-to-r from-pink-600 via-purple-600 to-teal-500 bg-clip-text text-transparent">🎨 The Holi Frame 🎨</h1>
+     </div><!-- Right Logos -->
+     <div class="flex items-center gap-3">
+      
+     <img src="Salesforce_Corporate_Logo_RGB.png" 
+     class=" h-12  object-cover " 
+     alt="Logo 1">
+     </div>
+    </div>
+   </header><!-- Main Content -->
+   <main class="relative z-10 px-4 py-8">
+    <div class="max-w-6xl mx-auto"><!-- Greeting -->
+     <div class="text-center mb-8">
+      <p id="subtext" class="PAINTFORCE text-lg sm:text-xl text-white/90 drop-shadow">SALES AMER Celebrates</p>
+      <h2 id="greeting-text" class="PAINTFORCE text-3xl sm:text-4xl md:text-5xl font-extrabold text-white drop-shadow-lg  mb-2">PAINTFORCE BY FUNFORCE</h2>
+      <p id="subtext" class=" PAINTFORCE text-lg sm:text-xl text-white/90 drop-shadow">Capture your colorful moments!</p>
+     </div><!-- Photo Booth Section -->
+     <div class="grid lg:grid-cols-2 gap-8 items-start"><!-- Camera Section -->
+      <div class="bg-white/95 backdrop-blur-md rounded-3xl p-6 shadow-2xl">
+       <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2"><span class="text-2xl">📸</span> Camera</h3>
+       <div class="photo-frame mb-4">
+        <div class="relative bg-gray-900 rounded-xl overflow-hidden aspect-[4/3]">
+         <video id="camera-feed" class="w-full h-full object-contain" autoplay playsinline></video>
+         <div id="camera-placeholder" class="absolute inset-0 flex flex-col items-center justify-center bg-gray-800 text-white">
+          <svg class="w-16 h-16 mb-4 opacity-50" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+          </svg>
+          <p class="text-sm opacity-70">Click "Start Camera" to begin</p>
+         </div>
+        </div>
+       </div>
+       <div class="flex gap-3 justify-center"><button id="start-camera-btn" class="capture-btn px-6 py-3 rounded-full text-white font-semibold flex items-center gap-2">
+         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+         </svg> Start Camera </button> <button id="capture-btn" class="capture-btn px-6 py-3 rounded-full text-white font-semibold flex items-center gap-2 opacity-50 cursor-not-allowed" disabled>
+         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" /> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+         </svg> Capture </button>
+       </div>
+      </div><!-- Preview Section -->
+      <div class="bg-white/95 backdrop-blur-md rounded-3xl p-6 shadow-2xl">
+       <h3 class="text-xl font-bold text-gray-800 mb-4 flex items-center gap-2"><span class="text-2xl">🖼️</span> Your Holi Photo</h3>
+       <div class="photo-frame mb-4">
+        <div id="preview-container" class="relative bg-gray-100 rounded-xl overflow-hidden aspect-[4/3]">
+         <canvas id="preview-canvas" class="w-full h-full object-contain hidden"></canvas>
+         <div id="preview-placeholder" class="absolute inset-0 flex flex-col items-center justify-center text-gray-400">
+          <svg class="w-16 h-16 mb-4" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          <p class="text-sm">Your photo will appear here</p>
+         </div>
+        </div>
+       </div>
+       <div class="flex justify-center"><button id="download-btn" class="download-btn px-8 py-3 rounded-full text-white font-semibold flex items-center gap-2 opacity-50 cursor-not-allowed" disabled>
+         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+         </svg> Download Photo </button>
+       </div>
+      </div>
+     </div><!-- Instructions -->
+     <div class="mt-8 bg-white/90 backdrop-blur-md rounded-2xl p-6 max-w-2xl mx-auto">
+      <h4 class="font-bold text-gray-800 mb-3 text-center">📝 How to use:</h4>
+      <ol class="text-gray-700 space-y-2 text-sm sm:text-base">
+       <li class="flex items-start gap-2"><span class="bg-red-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">1</span> <span>Click "Start Camera" and allow camera access</span></li>
+       <li class="flex items-start gap-2"><span class="bg-purple-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">2</span> <span>Strike your best Holi pose! 🎉</span></li>
+       <li class="flex items-start gap-2"><span class="bg-pink-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">3</span> <span>Click "Capture" to take your photo</span></li>
+       <li class="flex items-start gap-2"><span class="bg-yellow-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">4</span> <span>Download and share your colorful memory! in thread and make pic as Slack Profile pic</span></li>
+        <li class="flex items-start gap-2"><span class="bg-green-500 text-white w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0">5</span> <span>Please note: We do not save, store, or upload your photo. Your image is processed only within your device and remains on this page unless you choose to download it.”</span></li>
+
+      </ol>
+     </div>
+    </div>
+   </main><!-- Footer -->
+   <footer class="relative z-10 text-center py-6 text-white/80">
+    <p class="text-sm" style="color: red;">Made with 💜 for Holi 2026 from Sales AMER Funforce</p>
+   </footer>
+  </div>
+  <script>
+    const defaultConfig = {
+      greeting_text: 'Happy Holi! 🌈',
+      subtext: 'Capture your colorful moments!',
+      primary_color: '#FF6B6B',
+      secondary_color: '#C44DFF',
+      accent_color: '#4ECDC4',
+      text_color: '#1F2937',
+      background_color: '#FFE66D'
+    };
+    
+    let cameraStream = null;
+    let capturedImage = null;
+    
+    // DOM Elements
+    const video = document.getElementById('camera-feed');
+    const cameraPlaceholder = document.getElementById('camera-placeholder');
+    const previewCanvas = document.getElementById('preview-canvas');
+    const previewPlaceholder = document.getElementById('preview-placeholder');
+    const startCameraBtn = document.getElementById('start-camera-btn');
+    const captureBtn = document.getElementById('capture-btn');
+    const downloadBtn = document.getElementById('download-btn');
+    const greetingText = document.getElementById('greeting-text');
+    const subtextEl = document.getElementById('subtext');
+    
+    // Start Camera
+    startCameraBtn.addEventListener('click', async () => {
+      try {
+        cameraStream = await navigator.mediaDevices.getUserMedia({ 
+          video: { 
+            facingMode: 'user',
+            width: { ideal: 1280 },
+            height: { ideal: 720 }
+          } 
+        });
+        video.srcObject = cameraStream;
+        cameraPlaceholder.classList.add('hidden');
+        video.classList.remove('hidden');
+        
+        startCameraBtn.textContent = 'Camera On';
+        startCameraBtn.classList.add('opacity-50');
+        
+        captureBtn.disabled = false;
+        captureBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+      } catch (err) {
+        console.error('Camera access denied:', err);
+        cameraPlaceholder.innerHTML = `
+          <svg class="w-16 h-16 mb-4 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+          </svg>
+          <p class="text-sm text-red-300">Camera access denied</p>
+          <p class="text-xs mt-2 opacity-70">Please allow camera access and refresh</p>
+        `;
+      }
+    });
+    
+    const logoLeft = new Image();
+    logoLeft.src = "Funforce-Sales-AMER-Logo-RGB.png";
+
+    //const logoRight1 = new Image();
+    //logoRight1.src = "Funforce-Sales-AMER-Logo-RGB.png";
+
+    const logoRight2 = new Image();
+    logoRight2.src = "Salesforce_Corporate_Logo_RGB.png";
+
+    function drawLogoFit(ctx, img, x, y, maxHeight) {
+      if (!img.complete) return;
+
+      const ratio = img.width / img.height;
+      const width = maxHeight * ratio;
+
+      ctx.drawImage(img, x, y, width, maxHeight);
+    }
+
+    // Capture Photo
+    captureBtn.addEventListener('click', () => {
+      if (!cameraStream) return;
+      
+      const canvas = previewCanvas;
+      const ctx = canvas.getContext('2d');
+      
+      // Set canvas size
+      canvas.width = video.videoWidth;
+      canvas.height = video.videoHeight;    
+
+      // Draw video frame (mirrored for selfie)
+      ctx.save();
+      //ctx.translate(canvas.width, 0);
+      //ctx.scale(-1, 1);
+      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+      //ctx.restore();
+      
+      // Add colorful border/frame
+      const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+     // gradient.addColorStop(0, '#FF6B6B');
+     // gradient.addColorStop(0.33, '#FF6B6B');
+     // gradient.addColorStop(0.66, '#FF6B6B');
+     // gradient.addColorStop(1, '#FF6B6B');
+      
+      ctx.strokeStyle = gradient;
+      ctx.lineWidth = 20;
+      ctx.strokeRect(10, 10, canvas.width - 20, canvas.height - 20); 
+      
+      // Add Happy Holi text banner at bottom
+      const bannerHeight = 120;
+      const bannerY = canvas.height - bannerHeight - 30;
+      
+      // Semi-transparent banner background
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+      ctx.roundRect(40, bannerY, canvas.width - 80, bannerHeight, 20);
+      ctx.fill();
+      
+      // Banner border
+     ctx.strokeStyle = gradient;
+      ctx.lineWidth = 4;
+      ctx.roundRect(40, bannerY, canvas.width - 80, bannerHeight, 20);
+      ctx.stroke(); 
+      
+      // Happy Holi text
+      ctx.fillStyle = '#C44DFF';
+      ctx.font = 'bold 48px Poppins, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('🎨 Happy Holi! 🎨', canvas.width / 2, bannerY + 55);
+      
+      // Subtext
+      ctx.fillStyle = '#FF6B6B';
+      ctx.font = '24px Poppins, sans-serif';
+      ctx.fillText('Festival of Colors 2026 with Funforce', canvas.width / 2, bannerY + 95);
+      
+      // Add logos in corners of the banner
+      // Draw logos in banner
+      const logoHeight = 80;
+      const centerY = bannerY + (bannerHeight / 2) - (logoHeight / 2);
+
+      // LEFT LOGO
+      drawLogoFit(ctx, logoLeft, 70, centerY, logoHeight);
+
+      // RIGHT LOGOS
+      //drawLogoFit(ctx, logoRight1, canvas.width - 320, centerY, logoHeight);
+      drawLogoFit(ctx, logoRight2, canvas.width - 170, centerY, logoHeight);
+
+      
+      // Add color splashes/powder effect in corners
+      //drawColorSplash(ctx, 80, 80, '#FF6B6B', 40);
+      //drawColorSplash(ctx, canvas.width - 80, 80, '#FFE66D', 35);
+      //drawColorSplash(ctx, 100, canvas.height - 200, '#4ECDC4', 30);
+      //drawColorSplash(ctx, canvas.width - 100, canvas.height - 200, '#C44DFF', 38);
+      
+      // Show preview
+      previewPlaceholder.classList.add('hidden');
+      canvas.classList.remove('hidden');
+      
+      // Enable download
+      downloadBtn.disabled = false;
+      downloadBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+      
+      capturedImage = canvas.toDataURL('image/png');
+    });
+    
+    // Draw color splash effect
+    function drawColorSplash(ctx, x, y, color, size) {
+      ctx.save();
+      ctx.globalAlpha = 0.7;
+      
+      for (let i = 0; i < 8; i++) {
+        const angle = (Math.PI * 2 / 8) * i;
+        const splashX = x + Math.cos(angle) * size * 0.6;
+        const splashY = y + Math.sin(angle) * size * 0.6;
+        const splashSize = size * (0.3 + Math.random() * 0.4);
+        
+        ctx.beginPath();
+        ctx.arc(splashX, splashY, splashSize, 0, Math.PI * 2);
+        ctx.fillStyle = color;
+        ctx.fill();
+      }
+      
+      ctx.beginPath();
+      ctx.arc(x, y, size * 0.5, 0, Math.PI * 2);
+      ctx.fillStyle = color;
+      ctx.fill();
+      
+      ctx.restore();
+    }
+    
+    // Download Photo
+    downloadBtn.addEventListener('click', () => {
+      if (!capturedImage) return;
+      
+      const link = document.createElement('a');
+      link.download = 'holi-photo-2024.png';
+      link.href = capturedImage;
+      link.click();
+    });
+    
+    // Element SDK Integration
+    async function onConfigChange(config) {
+      greetingText.textContent = config.greeting_text || defaultConfig.greeting_text;
+      subtextEl.textContent = config.subtext || defaultConfig.subtext;
+    }
+    
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.primary_color || defaultConfig.primary_color,
+            set: (value) => {
+              config.primary_color = value;
+              window.elementSdk.setConfig({ primary_color: value });
+            }
+          },
+          {
+            get: () => config.secondary_color || defaultConfig.secondary_color,
+            set: (value) => {
+              config.secondary_color = value;
+              window.elementSdk.setConfig({ secondary_color: value });
+            }
+          },
+          {
+            get: () => config.accent_color || defaultConfig.accent_color,
+            set: (value) => {
+              config.accent_color = value;
+              window.elementSdk.setConfig({ accent_color: value });
+            }
+          }
+        ],
+        borderables: [],
+        fontEditable: undefined,
+        fontSizeable: undefined
+      };
+    }
+    
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ['greeting_text', config.greeting_text || defaultConfig.greeting_text],
+        ['subtext', config.subtext || defaultConfig.subtext]
+      ]);
+    }
+    
+    // Initialize SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d05f876f3b5c69f',t:'MTc3MTUwNjI3Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
